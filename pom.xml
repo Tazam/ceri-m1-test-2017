@@ -1,0 +1,37 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0">
+<modelVersion>4.0.0</modelVersion>
+<artifactId>Technique_de_test_TP1</artifactId>
+<groupId>uapv.etd.uapv1301258</groupId>
+<version>1.0.0</version>
+
+<!-- Project metadata -->
+<name>Technique_de_test_TP1</name>
+<url>https://github.com/Tazam/ceri-m1-test-2017</url>
+
+<!-- Project dependencies -->
+<dependencies>
+	<dependency>
+		<groupId>junit</groupId>
+		<artifactId>junit</artifactId>
+		<version>4.0</version>
+		<type>jar</type>
+		<scope>test</scope>
+		<optional>true</optional>
+	</dependency>
+</dependencies>
+
+<!-- Project build -->
+<build>
+	<defaultGoal>install</defaultGoal>
+	<directory>${basedir}/target</directory>
+	<finalName>${project.artifactId}-${project.version}</finalName>
+	<filters>
+
+	</filters>
+	<sourceDirectory>${basedir}/src/main/java</sourceDirectory>
+    <scriptSourceDirectory>${basedir}/src/main/scripts</scriptSourceDirectory>
+    <testSourceDirectory>${basedir}/src/test/java</testSourceDirectory>
+    <outputDirectory>${basedir}/target/classes</outputDirectory>
+    <testOutputDirectory>${basedir}/target/test-classes</testOutputDirectory>
+</build>
+</project>
