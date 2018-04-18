@@ -1,6 +1,6 @@
 package fr.univavignon.rodeo;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 import org.mockito.Mockito;
@@ -12,8 +12,9 @@ public class IGameStateProviderTest {
 	
 	protected static IGameStateProvider getTestInstance()
 	{
+		final IGameState gameState = IGameStateTest.getTestInstance();
 		IGameStateProvider gameStateProvider = Mockito.mock(IGameStateProvider.class);
-		Mockito.when(gameStateProvider.get("n1")).thenReturn(IGameStateTest.getTestInstance());
+		Mockito.when(gameStateProvider.get("n1")).thenReturn(gameState);
 		
 		
 		return gameStateProvider;
@@ -22,8 +23,9 @@ public class IGameStateProviderTest {
 	@Test
 	public void testGet()
 	{
-		final IGameStateProvider gameStateProvider = getTestInstance();
-		assertEquals(IGameState.class,gameStateProvider.get("n1"));
+		final IGameStateProvider gameStateProviderMock = getTestInstance();
+		//assertEquals(IGameState.class,gameStateProvider.get("n1"));
+		assertTrue(gameStateProviderMock.get("n1") instanceof IGameState);
 	}
 
 }
