@@ -20,28 +20,33 @@ public class IAnimalTest {
 		return animalMock;
 	}
 	
+	protected IAnimal getTestInstance2()
+	{
+		return getTestInstance();
+	}
+	
 	@Test
 	public void testXp()
 	{
-		final IAnimal animal = getTestInstance();
+		final IAnimal animal = getTestInstance2();
 		assertEquals(3,animal.getXP());
 	}
 	
 	@Test public void testIsBoss()
 	{
-		final IAnimal animal = getTestInstance();
+		final IAnimal animal = getTestInstance2();
 		assertEquals(true,animal.isBoss());
 	}
 	
 	@Test public void testIsEndangered()
 	{
-		final IAnimal animal = getTestInstance();
+		final IAnimal animal = getTestInstance2();
 		assertEquals(true,animal.isEndangered());
 	}
 	
 	@Test public void testIsSecret()
 	{
-		final IAnimal animal = getTestInstance();
+		final IAnimal animal = getTestInstance2();
 		assertEquals(true,animal.isSecret());
 	}
 	

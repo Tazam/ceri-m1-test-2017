@@ -29,17 +29,22 @@ public class ISpecieTest {
 		return specieMock;
 	}
 	
+	protected ISpecie getTestInstance2()
+	{
+		return getTestInstance();
+	}
+	
 	@Test
 	public void testGetArea()
 	{
-		final ISpecie specie = getTestInstance();
+		final ISpecie specie = getTestInstance2();
 		assertEquals(3,specie.getArea());
 	}
 	
 	@Test
 	public void testGetAnimals()
 	{
-		final ISpecie specie = getTestInstance();
+		final ISpecie specie = getTestInstance2();
 		assertEquals(3,specie.getAnimals().size());
 	}
 	
