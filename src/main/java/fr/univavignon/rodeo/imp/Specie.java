@@ -1,5 +1,6 @@
 package fr.univavignon.rodeo.imp;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import fr.univavignon.rodeo.api.IAnimal;
@@ -15,7 +16,13 @@ public class Specie implements ISpecie {
 	{
 		this.name = name;
 		this.area = area;
-		this.animals = animals;
+		if (animals!=null)
+		{
+			this.animals = animals;
+		}else
+		{
+			this.animals = new ArrayList<IAnimal>();
+		}
 	}
 
 	public String getName() {
@@ -33,6 +40,16 @@ public class Specie implements ISpecie {
 	protected void addAnimal(Animal a)
 	{
 		this.animals.add(a);
+	}
+	
+	protected boolean containsAnimal(String name)
+	{
+		for (IAnimal a : this.animals)
+		{
+			if (a.getName().equals(name))
+				return true;
+		}
+		return false;
 	}
 	
 	@Override

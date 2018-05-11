@@ -29,15 +29,20 @@ public class IEnvironmentTest {
 		return environmentMock;
 	}
 	
+	protected IEnvironment getTestInstance2()
+	{
+		return getTestInstance();
+	}
+	
 	@Test public void testGetArea()
 	{
-		final IEnvironment environment = getTestInstance();
+		final IEnvironment environment = getTestInstance2();
 		assertEquals(3,environment.getAreas());
 	}
 	
 	@Test public void testGetSpecies()
 	{
-		final IEnvironment environment = getTestInstance();
+		final IEnvironment environment = getTestInstance2();
 		assertEquals(3,environment.getSpecies().size());
 	}
 

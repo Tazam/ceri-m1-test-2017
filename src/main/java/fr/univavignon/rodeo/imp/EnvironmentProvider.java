@@ -11,7 +11,6 @@ import fr.univavignon.rodeo.api.IEnvironmentProvider;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
 import org.apache.commons.csv.CSVRecord;
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
 import java.nio.file.Files;
@@ -23,6 +22,11 @@ public class EnvironmentProvider implements IEnvironmentProvider {
 	private Map<String,Environment> data;
 	
 	private String pathDataCSV;
+	
+	public EnvironmentProvider(String str)
+	{
+		
+	}
 	
 	public EnvironmentProvider()
 	{
@@ -44,8 +48,7 @@ public class EnvironmentProvider implements IEnvironmentProvider {
 
 	public IEnvironment getEnvironment(String name)
 			throws IllegalArgumentException {
-		// TODO Auto-generated method stub
-		return null;
+		return this.data.get(name);
 	}
 	
 	private void loader() throws IOException
@@ -70,18 +73,52 @@ public class EnvironmentProvider implements IEnvironmentProvider {
 	        }
 	}
 	
-	private void addAnimal(String animal, String specie, String aClass, String Unlocked, String xp)
+	public void addAnimal(String animal, String specie, String aClass, String Unlocked, String xp)
 	{
 		if (this.data == null)
 			return;
-		if (data.containsValue(Unlocked))
+		
+		// si l'environement n'éxiste pas on le crée.
+		if (!data.containsKey(CleanUnlocked("NAME",Unlocked)))
+			{
+				this.data.put(CleanUnlocked("NAME",Unlocked), new Environment(CleanUnlocked("NAME",Unlocked),0,null));
+				this.availableEnvironments.add(CleanUnlocked("NAME",Unlocked));
+			}
+
+		// si l'environement ne contient pas encore l'espece de l'animal courant, on l'ajoute.
+		if (!this.data.get(CleanUnlocked("NAME",Unlocked)).containsSpecie(specie))
+			{
+				this.data.get(CleanUnlocked("NAME",Unlocked)).addSpecie(new Specie(specie,Integer.parseInt(CleanUnlocked("INT",Unlocked)),null));
+				if (Integer.parseInt(CleanUnlocked("INT",Unlocked))>this.data.get(CleanUnlocked("NAME",Unlocked)).getAreas())
+						this.data.get(CleanUnlocked("NAME",Unlocked)).autoSetAreas();
+			}
+		
+		// si l'espece ne contient pas l'animal courant on l'ajoute
+		if (!this.data.get(CleanUnlocked("NAME",Unlocked)).getSpecie(specie).containsAnimal(animal))
 		{
-			//if (data.get(Unlocked).getSpecies().contains(o))
-		}else
-		{
-			
+			this.data.get(CleanUnlocked("NAME",Unlocked)).getSpecie(specie).addAnimal(new Animal(animal,Integer.parseInt(xp),aClass.equals("Secret"),aClass.equals("Endangered"),aClass.equals("Boss")));
 		}
+		
 	}
+	
+	/**
+	 * 
+	 * @param option : if 'NAME' return name of area, if 'INT' return area number
+	 * @param raw : String : "NameArea areaNumber"
+	 * @return String name or number of area giving on raw
+	 * @author Schmidt Gaëtan
+	 */
+	private String CleanUnlocked(String option, String raw)
+	{
+		if (option.equals("NAME"))
+			return raw.subSequence(0, raw.length()-2).toString();
+		if (option.equals("INT"))
+			return raw.subSequence(raw.length()-1, raw.length()).toString(); 
+		return raw;
+		
+	}
+	
+	
 	/*
 	private int xpByType(String tier, String area, String name)
 	{
