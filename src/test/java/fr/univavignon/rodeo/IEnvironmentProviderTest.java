@@ -35,16 +35,21 @@ public class IEnvironmentProviderTest {
 		return environmentProviderMock;
 	}
 	
+	protected IEnvironmentProvider getTestInstance2()
+	{
+		return getTestInstance();
+	}
+	
 	@Test public void testGetAvailableEnvironments()
 	{
-		final IEnvironmentProvider environmentProviderMock = getTestInstance();
+		final IEnvironmentProvider environmentProviderMock = getTestInstance2();
 		assertEquals(3,environmentProviderMock.getAvailableEnvironments().size());
 		assertEquals("e1",environmentProviderMock.getAvailableEnvironments().get(0));
 	}
 	
 	@Test public void testGetEnvironment()
 	{
-		final IEnvironmentProvider environmentProviderMock = getTestInstance();
+		final IEnvironmentProvider environmentProviderMock = getTestInstance2();
 		assertTrue(environmentProviderMock.getEnvironment("e1") instanceof IEnvironment);
 		assertEquals(null,environmentProviderMock.getEnvironment("e4"));
 		/*try
@@ -59,7 +64,7 @@ public class IEnvironmentProviderTest {
 	@Test(expected =  java.lang.IllegalArgumentException.class)
 	public void testGetEnvironmentEx()
 	{
-		final IEnvironmentProvider environmentProviderMock = getTestInstance();
+		final IEnvironmentProvider environmentProviderMock = getTestInstance2();
 		environmentProviderMock.getEnvironment(null);
 	}
 

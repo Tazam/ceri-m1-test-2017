@@ -25,14 +25,22 @@ public class EnvironmentProvider implements IEnvironmentProvider {
 	
 	public EnvironmentProvider(String str)
 	{
-		
+		this.availableEnvironments = new ArrayList<String>();
+		this.data = new HashMap<String,Environment>();
+		this.pathDataCSV = str;
+		try {
+			loader();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	public EnvironmentProvider()
 	{
 		this.availableEnvironments = new ArrayList<String>();
 		this.data = new HashMap<String,Environment>();
-		this.pathDataCSV = "";
+		this.pathDataCSV = "ListAnimals.csv";
 		try {
 			loader();
 		} catch (IOException e) {
@@ -46,8 +54,11 @@ public class EnvironmentProvider implements IEnvironmentProvider {
 		return this.availableEnvironments;
 	}
 
-	public IEnvironment getEnvironment(String name)
-			throws IllegalArgumentException {
+	public IEnvironment getEnvironment(String name){
+		
+		if (name == null)
+			throw new IllegalArgumentException();
+		
 		return this.data.get(name);
 	}
 	
@@ -55,10 +66,7 @@ public class EnvironmentProvider implements IEnvironmentProvider {
 	{
 		try (
 	            Reader reader = Files.newBufferedReader(Paths.get(pathDataCSV));
-	            CSVParser csvParser = new CSVParser(reader, CSVFormat.DEFAULT
-	                    .withHeader("Animal", "Species", "Class", "Unlocked", "XP Given")
-	                    .withIgnoreHeaderCase()
-	                    .withTrim());
+	            CSVParser csvParser = new CSVParser(reader, CSVFormat.EXCEL.withHeader());
 	        ) {
 	            for (CSVRecord csvRecord : csvParser) {
 	                // Accessing values by the names assigned to each column
@@ -77,6 +85,7 @@ public class EnvironmentProvider implements IEnvironmentProvider {
 	{
 		if (this.data == null)
 			return;
+		
 		
 		// si l'environement n'éxiste pas on le crée.
 		if (!data.containsKey(CleanUnlocked("NAME",Unlocked)))
