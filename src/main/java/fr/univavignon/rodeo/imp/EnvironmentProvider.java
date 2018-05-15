@@ -88,24 +88,25 @@ public class EnvironmentProvider implements IEnvironmentProvider {
 		
 		
 		// si l'environement n'éxiste pas on le crée.
-		if (!data.containsKey(CleanUnlocked("NAME",Unlocked)))
+		if (!data.containsKey(cleanUnlocked("NAME",Unlocked)))
 			{
-				this.data.put(CleanUnlocked("NAME",Unlocked), new Environment(CleanUnlocked("NAME",Unlocked),0,null));
-				this.availableEnvironments.add(CleanUnlocked("NAME",Unlocked));
+				this.data.put(cleanUnlocked("NAME",Unlocked), new Environment(cleanUnlocked("NAME",Unlocked),0,null));
+				this.availableEnvironments.add(cleanUnlocked("NAME",Unlocked));
 			}
 
 		// si l'environement ne contient pas encore l'espece de l'animal courant, on l'ajoute.
-		if (!this.data.get(CleanUnlocked("NAME",Unlocked)).containsSpecie(specie))
+		if (!this.data.get(cleanUnlocked("NAME",Unlocked)).containsSpecie(specie))
 			{
-				this.data.get(CleanUnlocked("NAME",Unlocked)).addSpecie(new Specie(specie,Integer.parseInt(CleanUnlocked("INT",Unlocked)),null));
-				if (Integer.parseInt(CleanUnlocked("INT",Unlocked))>this.data.get(CleanUnlocked("NAME",Unlocked)).getAreas())
-						this.data.get(CleanUnlocked("NAME",Unlocked)).autoSetAreas();
+				this.data.get(cleanUnlocked("NAME",Unlocked)).addSpecie(new Specie(specie,Integer.parseInt(cleanUnlocked("INT",Unlocked)),null));
+				if (Integer.parseInt(cleanUnlocked("INT",Unlocked))>this.data.get(cleanUnlocked("NAME",Unlocked)).getAreas())
+						this.data.get(cleanUnlocked("NAME",Unlocked)).autoSetAreas();
 			}
 		
 		// si l'espece ne contient pas l'animal courant on l'ajoute
-		if (!this.data.get(CleanUnlocked("NAME",Unlocked)).getSpecie(specie).containsAnimal(animal))
+		if (!this.data.get(cleanUnlocked("NAME",Unlocked)).getSpecie(specie).containsAnimal(animal))
 		{
-			this.data.get(CleanUnlocked("NAME",Unlocked)).getSpecie(specie).addAnimal(new Animal(animal,Integer.parseInt(xp),aClass.equals("Secret"),aClass.equals("Endangered"),aClass.equals("Boss")));
+			this.data.get(cleanUnlocked("NAME",Unlocked)).getSpecie(specie).addAnimal(new Animal(animal,Integer.parseInt(xp),"Secret".equals(aClass),"Endangered".equals(aClass),"Boss".equals(aClass)));
+			//this.data.get(cleanUnlocked("NAME",Unlocked)).getSpecie(specie).addAnimal(new Animal(animal,Integer.parseInt(xp),aClass.equals("Secret"),aClass.equals("Endangered"),aClass.equals("Boss")));
 		}
 		
 	}
@@ -117,11 +118,11 @@ public class EnvironmentProvider implements IEnvironmentProvider {
 	 * @return String name or number of area giving on raw
 	 * @author Schmidt Gaëtan
 	 */
-	private String CleanUnlocked(String option, String raw)
+	private String cleanUnlocked(String option, String raw)
 	{
-		if (option.equals("NAME"))
+		if ("NAME".equals(option))
 			return raw.subSequence(0, raw.length()-2).toString();
-		if (option.equals("INT"))
+		if ("INT".equals(option))
 			return raw.subSequence(raw.length()-1, raw.length()).toString(); 
 		return raw;
 		
