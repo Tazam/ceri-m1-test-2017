@@ -45,7 +45,8 @@ public class SpecieTest extends ISpecieTest{
 		assertEquals(true,asp.get(0).equals(asp.get(0)));
 		assertEquals(true,asp.get(0).equals(asp.get(1)));
 		assertEquals(false,asp.get(0).equals(asp.get(2)));
-		assertEquals(false,asp.get(0).equals("r"));
+		String str = "r";
+		assertEquals(false,asp.get(0).equals(str));
 	}
 	
 	@Test
