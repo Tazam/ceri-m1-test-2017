@@ -1,5 +1,11 @@
 # ceri-m2-test
 
+## Information
+
+### Auteur
+
+- Gaëtan Schmidt
+
 ## Resources
 
 ### Cours
