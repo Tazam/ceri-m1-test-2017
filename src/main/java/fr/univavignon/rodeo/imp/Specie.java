@@ -42,7 +42,7 @@ public class Specie implements ISpecie {
 		this.animals.add(a);
 	}
 	
-	protected boolean containsAnimal(String name)
+	public boolean containsAnimal(String name)
 	{
 		for (IAnimal a : this.animals)
 		{

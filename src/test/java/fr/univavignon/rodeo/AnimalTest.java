@@ -31,12 +31,15 @@ public class AnimalTest extends IAnimalTest{
 	}
 	
 	@Test
-	public void testContainsAnimals()
+	public void testEquals()
 	{
 		final ArrayList<Animal> l = getTestInstance3();
+		String str = "aTest";
 		assertEquals(true,l.get(0).equals(l.get(0)));
 		assertEquals(true,l.get(0).equals(l.get(2)));
 		assertEquals(false,l.get(0).equals(l.get(1)));
+		assertEquals(false,l.get(0).equals(str));
+		
 		
 	}
 
