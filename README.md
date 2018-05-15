@@ -1,5 +1,7 @@
 # ceri-m2-test
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/89bbbdeaa5e84dc1a547c69cab9f8e6f)](https://app.codacy.com/app/Tazam/ceri-m1-test-2017?utm_source=github.com&utm_medium=referral&utm_content=Tazam/ceri-m1-test-2017&utm_campaign=badger)
+
 ## Information
 
 ### Auteur
