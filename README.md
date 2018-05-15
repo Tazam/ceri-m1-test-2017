@@ -1,12 +1,15 @@
 # ceri-m2-test
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/e4e3aa9255fa4181b65ff95626bef6c1)](https://www.codacy.com/app/Tazam/ceri-m1-test-2017?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Tazam/ceri-m1-test-2017&amp;utm_campaign=Badge_Grade)
+[![CircleCI](https://circleci.com/gh/Tazam/ceri-m1-test-2017.svg?style=svg)](https://circleci.com/gh/Tazam/ceri-m1-test-2017) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/e4e3aa9255fa4181b65ff95626bef6c1)](https://www.codacy.com/app/Tazam/ceri-m1-test-2017?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Tazam/ceri-m1-test-2017&amp;utm_campaign=Badge_Grade) [![codecov](https://codecov.io/gh/Tazam/ceri-m1-test-2017/branch/master/graph/badge.svg)](https://codecov.io/gh/Tazam/ceri-m1-test-2017)
 
 
-## Information
+
+
+## Informations
 
 ### Auteur
 
 - Gaëtan Schmidt
+- M1 ILSEN CERI UAPV
 
 ## Resources
 
