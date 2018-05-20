@@ -64,5 +64,12 @@ public class EnvironmentTest extends IEnvironmentTest{
 		assertEquals(true,asp.get(0).containsSpecie("sp1"));
 		assertEquals(false,asp.get(0).containsSpecie("p"));
 	}
+	
+	@Test
+	public void testGetName()
+	{
+		ArrayList<Environment> asp = getTestInstance3();
+		assertEquals("e1",asp.get(0).getName());
+	}
 
 }

@@ -28,6 +28,30 @@ public class EnvironmentProviderTest extends IEnvironmentProviderTest {
 		return eRet;
 	}
 	
+	public EnvironmentProvider getTestInstance4()
+	{
+		EnvironmentProvider eRet = new EnvironmentProvider("noFile.csv");
+		return eRet;
+	}
+	
+	public EnvironmentProvider getTestInstance5()
+	{
+		EnvironmentProvider eRet = new EnvironmentProvider();
+		return eRet;
+	}
+	
+	@Test(expected =  java.io.IOException.class)
+	public void testEnvironmentProvierConstructeur1()
+	{
+		EnvironmentProvider epr = getTestInstance4();
+	}
+	
+	@Test(expected =  java.io.IOException.class)
+	public void testEnvironmentProvierConstructeur2()
+	{
+		EnvironmentProvider epr = getTestInstance5();
+	}
+	
 	@Test
 	public void testAddAnimals()
 	{

@@ -83,9 +83,6 @@ public class EnvironmentProvider implements IEnvironmentProvider {
 	
 	public void addAnimal(String animal, String specie, String aClass, String Unlocked, String xp)
 	{
-		if (this.data == null)
-			return;
-		
 		
 		// si l'environement n'éxiste pas on le crée.
 		if (!data.containsKey(cleanUnlocked("NAME",Unlocked)))
