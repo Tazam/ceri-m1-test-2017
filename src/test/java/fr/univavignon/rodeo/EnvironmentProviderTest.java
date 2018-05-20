@@ -34,24 +34,11 @@ public class EnvironmentProviderTest extends IEnvironmentProviderTest {
 		return eRet;
 	}
 	
-	public EnvironmentProvider getTestInstance5()
-	{
-		EnvironmentProvider eRet = new EnvironmentProvider();
-		return eRet;
-	}
-	
 	@Test
 	public void testEnvironmentProvierConstructeur1() throws Exception
 	{
 		EnvironmentProvider epr = getTestInstance4();
 		assertEquals(true,epr.fail);
-	}
-	
-	@Test
-	public void testEnvironmentProvierConstructeur2() throws Exception
-	{
-		EnvironmentProvider epr = getTestInstance5();
-		assertEquals(false,epr.fail);
 	}
 	
 	@Test

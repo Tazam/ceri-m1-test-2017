@@ -41,23 +41,6 @@ public class EnvironmentProvider implements IEnvironmentProvider {
 		}
 	}
 	
-	public EnvironmentProvider()
-	{
-		this.availableEnvironments = new ArrayList<String>();
-		this.data = new HashMap<String,Environment>();
-		this.pathDataCSV = "ListAnimals.csv";
-		this.fail = false;
-		try {
-			loader();
-		} catch (IOException e) {
-			this.availableEnvironments = null;
-			this.data = null;
-			this.pathDataCSV = null;
-			this.fail = true;
-			e.printStackTrace();
-		}
-	}
-	
 
 	public List<String> getAvailableEnvironments() {
 		return this.availableEnvironments;

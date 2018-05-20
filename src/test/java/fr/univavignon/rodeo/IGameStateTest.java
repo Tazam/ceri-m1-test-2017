@@ -15,7 +15,7 @@ public class IGameStateTest {
 	{
 		IGameState gameState = Mockito.mock(IGameState.class);
 		
-		Mockito.when(gameState.getProgression()).thenReturn(3);
+		Mockito.when(gameState.getProgression()).thenReturn(0);
 		Mockito.when(gameState.getSpecieLevel(null)).thenThrow(new java.lang.IllegalArgumentException());
 		//Mockito.when(gameState.getSpecieLevel(ISpecieTest.getTestInstance())).thenReturn(SpecieLevel.CHAMPION);
 		
@@ -23,17 +23,22 @@ public class IGameStateTest {
 		return gameState;
 	}
 	
+	protected  IGameState getTestInstance2()
+	{
+		return getTestInstance();
+	}
+	
 	@Test
 	public void testGetProgression()
 	{
-		final IGameState gameState = getTestInstance();
-		assertEquals(3,gameState.getProgression());
+		final IGameState gameState = getTestInstance2();
+		assertEquals(0,gameState.getProgression());
 	}
 	
 	@Test(expected =  java.lang.IllegalArgumentException.class)
 	public void testGetSpecieLevelNull()
 	{
-		final IGameState gameStateMock = getTestInstance();
+		final IGameState gameStateMock = getTestInstance2();
 		gameStateMock.getSpecieLevel(null);
 	}
 	
