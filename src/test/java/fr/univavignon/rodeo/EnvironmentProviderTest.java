@@ -40,18 +40,18 @@ public class EnvironmentProviderTest extends IEnvironmentProviderTest {
 		return eRet;
 	}
 	
-	@Test(expected =  java.io.IOException.class)
-	public void testEnvironmentProvierConstructeur1()
+	@Test
+	public void testEnvironmentProvierConstructeur1() throws Exception
 	{
 		EnvironmentProvider epr = getTestInstance4();
-		epr.toString();
+		assertEquals(true,epr.fail);
 	}
 	
-	@Test(expected =  java.io.IOException.class)
-	public void testEnvironmentProvierConstructeur2()
+	@Test
+	public void testEnvironmentProvierConstructeur2() throws Exception
 	{
 		EnvironmentProvider epr = getTestInstance5();
-		epr.toString();
+		assertEquals(false,epr.fail);
 	}
 	
 	@Test

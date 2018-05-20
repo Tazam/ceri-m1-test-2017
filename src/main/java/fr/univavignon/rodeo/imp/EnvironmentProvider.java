@@ -22,16 +22,21 @@ public class EnvironmentProvider implements IEnvironmentProvider {
 	private Map<String,Environment> data;
 	
 	private String pathDataCSV;
+	public boolean fail;
 	
 	public EnvironmentProvider(String str)
 	{
 		this.availableEnvironments = new ArrayList<String>();
 		this.data = new HashMap<String,Environment>();
 		this.pathDataCSV = str;
+		this.fail = false;
 		try {
 			loader();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			this.availableEnvironments = null;
+			this.data = null;
+			this.pathDataCSV = null;
+			this.fail = true;
 			e.printStackTrace();
 		}
 	}
@@ -41,10 +46,14 @@ public class EnvironmentProvider implements IEnvironmentProvider {
 		this.availableEnvironments = new ArrayList<String>();
 		this.data = new HashMap<String,Environment>();
 		this.pathDataCSV = "ListAnimals.csv";
+		this.fail = false;
 		try {
 			loader();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			this.availableEnvironments = null;
+			this.data = null;
+			this.pathDataCSV = null;
+			this.fail = true;
 			e.printStackTrace();
 		}
 	}
@@ -83,6 +92,7 @@ public class EnvironmentProvider implements IEnvironmentProvider {
 	
 	public void addAnimal(String animal, String specie, String aClass, String Unlocked, String xp)
 	{
+
 		
 		// si l'environement n'éxiste pas on le crée.
 		if (!data.containsKey(cleanUnlocked("NAME",Unlocked)))
