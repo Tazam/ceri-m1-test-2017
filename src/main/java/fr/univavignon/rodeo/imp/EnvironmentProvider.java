@@ -112,9 +112,9 @@ public class EnvironmentProvider implements IEnvironmentProvider {
 	{
 		if ("NAME".equals(option))
 			return raw.subSequence(0, raw.length()-2).toString();
-		if ("INT".equals(option))
-			return raw.subSequence(raw.length()-1, raw.length()).toString(); 
-		return raw;
+
+		return raw.subSequence(raw.length()-1, raw.length()).toString(); 
+
 		
 	}
 	
