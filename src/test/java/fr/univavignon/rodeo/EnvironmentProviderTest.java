@@ -44,6 +44,7 @@ public class EnvironmentProviderTest extends IEnvironmentProviderTest {
 	public void testEnvironmentProvierConstructeur1()
 	{
 		EnvironmentProvider epr = getTestInstance4();
+		epr.toString();
 	}
 	
 	@Test(expected =  java.io.IOException.class)
