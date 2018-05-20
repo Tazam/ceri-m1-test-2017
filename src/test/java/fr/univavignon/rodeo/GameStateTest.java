@@ -45,6 +45,15 @@ public class GameStateTest extends IGameStateTest {
 		assertEquals(33,gs.getProgression());
 	}
 	
+	@Test
+	public void doubleCatchTest()
+	{
+		GameState gs = getTestInstance2();
+		gs.catchAnimal(new Animal("a1",0,false,false,true));
+		gs.catchAnimal(new Animal("a1",0,false,false,true));
+		assertEquals(33,gs.getProgression());
+	}
+	
 	@Test(expected = java.lang.IllegalStateException.class)
 	public void exploreAreaErrorTest()
 	{

@@ -72,10 +72,5 @@ public class Animal implements IAnimal {
 		
 		return a.name.equals(this.name);
 	}
-	
-	public String toString()
-	{
-		return this.name;
-	}
 
 }

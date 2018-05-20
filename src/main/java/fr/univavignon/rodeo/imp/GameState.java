@@ -23,7 +23,7 @@ public class GameState implements IGameState {
 	
 	private String name;
 	private int xp;
-	private Map<IAnimal,Integer> cage;
+	private Map<String,Integer> cage;
 	private IEnvironmentProvider world;
 	private int areaCurrent;
 	
@@ -32,7 +32,7 @@ public class GameState implements IGameState {
 		this.xp = 0;
 		this.name = name;
 		this.world = new EnvironmentProvider(dataPath);
-		this.cage = new HashMap<IAnimal,Integer>();
+		this.cage = new HashMap<String,Integer>();
 		this.areaCurrent = 1;
 	}
 
@@ -58,9 +58,8 @@ public class GameState implements IGameState {
 				{
 					for (IAnimal a : specie.getAnimals())
 					{
-						if (this.cage.size()==0)
+						if (!this.cage.containsKey(a.getName()))
 							{
-							
 								throw new IllegalStateException();
 							}
 					}
@@ -78,10 +77,10 @@ public class GameState implements IGameState {
 		if (animal == null)
 			throw new IllegalArgumentException();
 		
-		if (this.cage.containsKey(animal))
+		if (this.cage.containsKey(animal.getName()))
 		{
-			Integer nb = this.cage.get(animal);
-			this.cage.put(animal, nb+1);
+			Integer nb = this.cage.get(animal.getName());
+			this.cage.put(animal.getName(), nb+1);
 			return;
 		}
 		
@@ -91,7 +90,7 @@ public class GameState implements IGameState {
 			{
 				if (specie.getArea()==this.areaCurrent&&specie.getAnimals().contains(animal))
 				{
-					this.cage.put(animal, 1);
+					this.cage.put(animal.getName(), 1);
 					return;
 				}
 			}
