@@ -103,7 +103,7 @@ public class EnvironmentProvider implements IEnvironmentProvider {
 			}
 		
 		// si l'espece ne contient pas l'animal courant on l'ajoute
-		if (!this.data.get(cleanUnlocked("NAME",Unlocked)).getSpecie(specie).containsAnimal(animal))
+		if ((this.data.get(cleanUnlocked("NAME",Unlocked)).getSpecie(specie)!=null)&&(!this.data.get(cleanUnlocked("NAME",Unlocked)).getSpecie(specie).containsAnimal(animal)))
 		{
 			this.data.get(cleanUnlocked("NAME",Unlocked)).getSpecie(specie).addAnimal(new Animal(animal,Integer.parseInt(xp),"Secret".equals(aClass),"Endangered".equals(aClass),"Boss".equals(aClass)));
 			//this.data.get(cleanUnlocked("NAME",Unlocked)).getSpecie(specie).addAnimal(new Animal(animal,Integer.parseInt(xp),aClass.equals("Secret"),aClass.equals("Endangered"),aClass.equals("Boss")));
