@@ -51,6 +51,7 @@ public class EnvironmentProviderTest extends IEnvironmentProviderTest {
 	public void testEnvironmentProvierConstructeur2()
 	{
 		EnvironmentProvider epr = getTestInstance5();
+		epr.toString();
 	}
 	
 	@Test
