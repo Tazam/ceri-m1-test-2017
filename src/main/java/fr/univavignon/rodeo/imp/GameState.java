@@ -18,10 +18,11 @@ import fr.univavignon.rodeo.api.SpecieLevel;
  */
 public class GameState implements IGameState {
 	
-	private String name;
-	private Map<String,Integer> cage;
-	private IEnvironmentProvider world;
-	private int areaCurrent;
+	protected String name;
+	protected Map<String,Integer> cage;
+	protected IEnvironmentProvider world;
+	protected int areaCurrent;
+	protected String initPath;
 	
 	public GameState(String name, String dataPath)
 	{
@@ -29,6 +30,16 @@ public class GameState implements IGameState {
 		this.world = new EnvironmentProvider(dataPath);
 		this.cage = new HashMap<String,Integer>();
 		this.areaCurrent = 1;
+		this.initPath = dataPath;
+	}
+	
+	public GameState(String name, Map<String,Integer> cage, int areaCurrent, String dataPath)
+	{
+		this.name = name;
+		this.cage = cage;
+		this.world = new EnvironmentProvider(dataPath);
+		this.areaCurrent = areaCurrent;
+		this.initPath = dataPath;
 	}
 
 	/* (non-Javadoc)
@@ -132,6 +143,30 @@ public class GameState implements IGameState {
 			}
 		}
 		return (this.cage.size()*100)/total;
+	}
+	
+	public String toString()
+	{
+		String docCage = "";
+		for (String aName : this.cage.keySet())
+		{
+			docCage+="<animal>"+"\n"+
+						"<name>"+aName+"</name>"+"\n"+
+						"<int>"+this.cage.get(aName)+"</int>"+"\n"+
+						"</animal>"+"\n";
+		}
+		
+		String ret="<?xml version=\\\"1.0\\\" encoding=\\\"UTF-8\\\"?>"+"\n"+
+				"<gameSave>"+"\n"+
+				"<basicInfo>"+"\n"+
+				"<name>"+this.name+"</name>"+"\n"+
+				"<path>"+this.initPath+"</path>"+"\n"+
+				"<areaCurrent>"+this.areaCurrent+"</areaCurrent>"+"\n"+
+				"</basicInfo>"+"\n"+
+				docCage+
+				"</gameSave>";
+		
+		return ret;
 	}
 
 }
