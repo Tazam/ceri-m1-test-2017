@@ -156,7 +156,7 @@ public class GameState implements IGameState {
 						"</animal>"+"\n";
 		}
 		
-		String ret="<?xml version=\\\"1.0\\\" encoding=\\\"UTF-8\\\"?>"+"\n"+
+		String ret="<?xml version=\"1.0\" encoding=\"UTF-8\"?>"+"\n"+
 				"<gameSave>"+"\n"+
 				"<basicInfo>"+"\n"+
 				"<name>"+this.name+"</name>"+"\n"+
