@@ -49,9 +49,12 @@ public class GameStateProviderTest extends IGameStateProviderTest{
 	public void getTest()
 	{
 		GameState gameState = new GameState("n1","testAnimals.csv");
+		gameState.catchAnimal(new Animal("a1",0,false,false,true));
 		GameStateProvider gsp = getTestInstance2();
 		gsp.save(gameState);
 		assertEquals("n1",gsp.get("n1").getName());
+		assertEquals(33,gsp.get("n1").getProgression());
+		
 	}
 	
 	@Test(expected =  java.lang.IllegalArgumentException.class)
@@ -59,6 +62,13 @@ public class GameStateProviderTest extends IGameStateProviderTest{
 	{
 		GameStateProvider gsp = getTestInstance2();
 		gsp.get(null);
+	}
+	
+	@Test
+	public void nonExistGameGet()
+	{
+		GameStateProvider gsp = getTestInstance2();
+		assertEquals("patate",gsp.get("dragon").getName());
 	}
 
 }
