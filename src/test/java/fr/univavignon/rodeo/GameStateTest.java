@@ -97,5 +97,12 @@ public class GameStateTest extends IGameStateTest {
 		
 		
 	}
+	
+	@Test
+	public void toStringTest()
+	{
+		GameState gs = getTestInstance2();
+		assertEquals(String.class,gs.toString().getClass());
+	}
 
 }
