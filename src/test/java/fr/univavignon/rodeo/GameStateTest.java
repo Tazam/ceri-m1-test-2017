@@ -12,7 +12,6 @@ import java.util.List;
 import org.junit.Test;
 
 import fr.univavignon.rodeo.api.IAnimal;
-import fr.univavignon.rodeo.api.IGameState;
 import fr.univavignon.rodeo.api.SpecieLevel;
 import fr.univavignon.rodeo.imp.Animal;
 import fr.univavignon.rodeo.imp.GameState;
