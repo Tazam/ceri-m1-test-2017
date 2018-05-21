@@ -54,7 +54,13 @@ public class GameStateProvider implements IGameStateProvider {
 	 */
 	@Override
 	public IGameState get(String name) throws IllegalArgumentException {
-		// TODO Auto-generated method stub
+		if (name==null)
+			throw new IllegalArgumentException();
+		
+		if (name.equals(this.game.getName()))
+			{
+				return this.game;
+			}
 		return null;
 	}
 

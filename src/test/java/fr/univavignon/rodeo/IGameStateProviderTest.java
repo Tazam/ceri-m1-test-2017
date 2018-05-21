@@ -20,10 +20,15 @@ public class IGameStateProviderTest {
 		return gameStateProvider;
 	}
 	
+	protected IGameStateProvider getTestInstance2()
+	{
+		return getTestInstance();
+	}
+	
 	@Test
 	public void testGet()
 	{
-		final IGameStateProvider gameStateProviderMock = getTestInstance();
+		final IGameStateProvider gameStateProviderMock = getTestInstance2();
 		//assertEquals(IGameState.class,gameStateProvider.get("n1"));
 		assertTrue(gameStateProviderMock.get("n1") instanceof IGameState);
 	}
